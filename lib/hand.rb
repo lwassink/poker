@@ -11,10 +11,8 @@ class Hand
     @cards << card
   end
 
-  def discard(*cards)
-    cards.each do |card|
-      @cards.delete(card)
-    end
+  def discard(*positions)
+    @cards.delete_if.with_index { |_, index| positions.include? index }
   end
 
   def <=>(hand)

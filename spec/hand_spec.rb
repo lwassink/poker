@@ -80,12 +80,12 @@ describe Hand do
 
   describe "#discard" do
     it "removes a single card" do
-      card_hand.discard(card)
+      card_hand.discard(0)
       expect(card_hand.cards).to eq([heart_card])
     end
 
     it "removed multiple cards" do
-      card_hand.discard(card, heart_card)
+      card_hand.discard(0, 1)
       expect(card_hand.cards).to be_empty
     end
   end
@@ -115,13 +115,4 @@ describe Hand do
       end
     end
   end
-
-  # it "test" do
-  #   puts four_aces.type
-  #   puts four_twos.type
-  #   puts flush.type
-  #   puts straight_nine_high.type
-  #   puts straight_eight_high.type
-  #   puts three_of_a_kind.type
-  # end
 end
