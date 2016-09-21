@@ -1,9 +1,9 @@
 class Card
   FACE_VALUES = {
-    1 => "ace",
     11 => "jack",
     12 => "queen",
-    13 => "king"
+    13 => "king",
+    14 => "ace"
   }
   attr_reader :suit, :value
   def initialize(suit, value)
@@ -27,5 +27,9 @@ class Card
 
   def ==(card)
     @suit == card.suit && @value == card.value
+  end
+
+  def inspect
+    to_s
   end
 end

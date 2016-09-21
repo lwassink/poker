@@ -20,6 +20,7 @@ describe Deck do
 
       expect(shuffled_deck.cards).not_to eq(deck.cards)
     end
+
   end
 
   describe "#deal_card" do
