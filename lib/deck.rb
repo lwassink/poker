@@ -7,6 +7,18 @@ class Deck
     @cards = generate_cards
   end
 
+  def shuffle!
+    @cards.shuffle!
+  end
+
+  def deal_card
+    @cards.shift
+  end
+
+  def empty?
+    @cards.empty?
+  end
+
   private
 
   def generate_cards
