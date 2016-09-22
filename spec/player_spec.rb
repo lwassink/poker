@@ -38,22 +38,29 @@ describe Player do
     end
   end
 
-  describe "#get_bet" do
+  describe "#make_bet" do
+    it "removes the bet from the pot" do
+      player.make_bet(500)
+      expect(player.pot).to eq(500)
+    end
+  end
+
+  describe "#get_raise" do
     context "normal function" do
       before(:each) { expect(player).to receive(:gets).and_return("300") }
       it "returns the bet amount" do
-        expect(player.get_bet).to eq(300)
+        expect(player.get_raise(100)).to eq(400)
       end
 
       it "decrements the pot by the amount" do
-        player.get_bet
-        expect(player.pot).to eq(700)
+        player.get_raise(100)
+        expect(player.pot).to eq(600)
       end
     end
 
     it "raises an error when bet is larger than pot" do
       expect(player).to receive(:gets).and_return("3000")
-      expect { player.get_bet }.to raise_error(ArgumentError)
+      expect { player.get_raise(100) }.to raise_error(ArgumentError)
     end
   end
 
@@ -71,6 +78,13 @@ describe Player do
     it "raises if given 's'" do
       expect(player).to receive(:gets).and_return("s")
       expect(player.get_decision).to eq(:see)
+    end
+  end
+
+  describe "#pay" do
+    it "increments the player's pot" do
+      player.pay(5000)
+      expect(player.pot).to eq(6000)
     end
   end
 

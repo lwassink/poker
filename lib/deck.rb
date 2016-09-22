@@ -24,7 +24,7 @@ class Deck
   def generate_cards
     cards = []
     [:diamonds, :spades, :clubs, :hearts].each do |suit|
-      (1..13).each do |value|
+      (2..14).each do |value|
         cards << Card.new(suit, value)
       end
     end

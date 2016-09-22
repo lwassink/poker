@@ -23,6 +23,10 @@ class Hand
     end
   end
 
+  def to_s
+    @cards.join(", ")
+  end
+
   protected
 
   def type
